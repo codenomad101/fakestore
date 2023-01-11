@@ -1,11 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import AddUser from "./AddUser";
+import { deleteuser } from "./UserSlice";
 
 function UserList() {
-   const users=useSelector((store)=>store.users)
+   const users=useSelector((store)=>store.users);
+   const dispatch=useDispatch();
+   const handleRemoveUser=(id)=>{
+dispatch(deleteuser({id:id}))
+   }
   const renderCart = () => {
     return (
       <>
@@ -37,7 +42,7 @@ function UserList() {
                 </svg>
               </button></Link>
               
-              <button>
+              <button onClick={()=>handleRemoveUser(user.id)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

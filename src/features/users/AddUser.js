@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "./UserSlice";
+import {v4 as uuidv4} from 'uuid';
 import Button from "../../components/Button";
 import TextBox from "../../components/TextBox";
 
@@ -16,7 +17,7 @@ function AddUser() {
     setValues({name:"",email:""});
     console.log(values);
     dispatch(addUser({
-      id:'3',
+      id:uuidv4(),
       name:values.name,
       email:values.email
     }))

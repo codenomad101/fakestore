@@ -1,33 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import AddUser from "./features/users/AddUser";
-import UserList from "./features/users/UserList";
-import "./index.css";
-import ErrorPage from "./features/users/ErrorPage";
+import { store } from "./store";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/add-user",
-    element: <AddUser></AddUser>,
-  },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
-]);
+
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  
   <React.StrictMode>
-    <RouterProvider router={router} />
-    
+    <BrowserRouter>
+    <Provider store={store}>
+    <App /> 
+    </Provider>
+      
+    </BrowserRouter>
+
   </React.StrictMode>
 );

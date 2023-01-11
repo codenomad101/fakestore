@@ -10,6 +10,7 @@ const TextBox = ({label,inputProps,onChange,value}) => {
       <input className='bg-gray-300 p-2 outline-none h-8' value ={value} type ="text" onChange={onChange} >
       
       </input>
+      
     </div>
      
     

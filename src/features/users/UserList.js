@@ -1,21 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import AddUser from "./AddUser";
 
 function UserList() {
-  const users = [
-    {
-      id: "1",
-      name: "Santosh",
-      email: "santosh@email.com",
-    },
-    {
-      id: "2",
-      name: "Ankosh",
-      email: "ankosh@email.com",
-    },
-  ];
+   const users=useSelector((store)=>store.users)
   const renderCart = () => {
     return (
       <>
@@ -29,7 +19,8 @@ function UserList() {
               <span className="font-normal text-gray-600">{user.email}</span>
             </div>
             <div className="flex gap-4">
-              <button>
+               <Link to={`edit-user/${user.id}`}>
+               <button>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -44,7 +35,8 @@ function UserList() {
                     d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
                   />
                 </svg>
-              </button>
+              </button></Link>
+              
               <button>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
